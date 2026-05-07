@@ -2,23 +2,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Persona p1 = new Persona("Luisa", 123456, "P. Sherman, calle Wallaby 42, Sidney");
+
 
         Mascota m1 = new Mascota("Evangeline", 11, "perro", "Malamute de Alaska", 27.23f);
 
         Consulta c1 = new Consulta("23/04/2026", "19:00",  "Le duele la oreja", "Otitis", "Gritin cada 8 horas", m1);
 
     int opcion;
+    Scanner infoIngresada =  new Scanner(System.in);
         do{
             Menu();
-            Scanner infoIngresada =  new Scanner(System.in);
+
             opcion = infoIngresada.nextInt();
             infoIngresada.nextLine();
 
             switch(opcion){
                 case 1:
                     System.out.println("o=o=o=> Persona <=o=o=o");
-                    p1.MostrarInfo();
+
                 break;
                 case 2:
                     m1.MostrarInfo();
@@ -32,7 +33,7 @@ public class Main {
                 break;
             }
         }
-        while(opcion !=4);
+        while(opcion !=5);
     }
     public static void Menu(){
         System.out.println("MENU VETERINARIA LA PEZUÑA");
