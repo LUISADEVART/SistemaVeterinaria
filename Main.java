@@ -40,6 +40,7 @@ public class Main {
         System.out.println("Opción 2 : Mascota");
         System.out.println("Opción 3 : Consulta");
         System.out.println("Opción 4 Salir del programa Vet");
+        System.out.println("Luisa la mansa paloma");
     }
 }
 
