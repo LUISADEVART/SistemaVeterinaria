@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Cliente extends Persona{
+public class Cliente extends Persona implements IActualizable{
     private String idCliente;
     private LocalDate fechaRegistro;
     private int cantidadMascotas;
