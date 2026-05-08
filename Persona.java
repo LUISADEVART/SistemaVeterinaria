@@ -1,18 +1,51 @@
-public class Persona {
+public abstract class Persona {
 
     private String nombre;
-    private int telefono;
+    private String telefono;
     private String direccion;
+    private String tipoPersona;
 
-    public Persona(String nombre, int telefono, String direccion) {
+    public Persona(String nombre, String telefono, String direccion, String tipoPersona) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.tipoPersona = tipoPersona;
+    }
+ 
+
+    public abstract void mostrarInfo();
+ //geters
+    public String getNombre(){
+    return nombre;
+    }
+    public String getTelefono(){
+    return telefono;
     }
 
-    public void MostrarInfo() {
-        System.out.println("El nombre del usuario ingresado es: " + nombre);
-        System.out.println("El telefono es: " + telefono);
-        System.out.println("La direccion es: " + direccion);
+    public String getDireccion(){
+    return direccion;
     }
+
+    public String getTipoPersona(){
+    return tipoPersona;
+    }
+
+//seters
+    public void setnombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    public void setTelefono(String telefono){
+        this.telefono = telefono;
+
+    }
+    public void setDireccion(String direccion){
+        this.direccion = direccion;
+
+    }
+        public void setTipoPersona(String tipoPersona){
+        this.tipoPersona = tipoPersona;
+
+    }
+
 }
