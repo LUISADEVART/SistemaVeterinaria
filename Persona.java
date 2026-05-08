@@ -31,19 +31,19 @@ public abstract class Persona {
     }
 
 //seters
-    public void Setnombre(String nombre){
+    public void setnombre(String nombre){
         this.nombre = nombre;
     }
 
-    public void SetTelefono(String telefono){
+    public void setTelefono(String telefono){
         this.telefono = telefono;
 
     }
-    public void SetDireccion(String direccion){
+    public void setDireccion(String direccion){
         this.direccion = direccion;
 
     }
-        public void SetTipoPersona(String tipoPersona){
+        public void setTipoPersona(String tipoPersona){
         this.tipoPersona = tipoPersona;
 
     }

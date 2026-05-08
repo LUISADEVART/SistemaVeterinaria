@@ -31,17 +31,17 @@ public class Empleado extends Persona{
     {
         return fechaContratacion;
     }
-    public Float salario(){
+    public Float getSalario(){
         return salario;
     }
     //setters
     public void setCargo(String cargo){
         this.cargo = cargo;
     }
-    public void SerFechaContratacion(LocalDate fechaContratacion){
+    public void setFechaContratacion(LocalDate fechaContratacion){
         this.fechaContratacion = fechaContratacion;
     }
-    public void salario(Float salario){
+    public void setSalario(Float salario){
         this.salario = salario;
     }
 
