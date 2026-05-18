@@ -1,10 +1,12 @@
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Cliente extends Persona implements IActualizable{
+public class Cliente extends Persona implements ICliente{
     private String idCliente;
     private LocalDate fechaRegistro;
     private int cantidadMascotas;
-    
+
 
     public Cliente(String nombre, String telefono, String direccion, String tipoPersona, String idCliente, LocalDate fechaRegistro, int cantidadMascotas)
     {
@@ -16,9 +18,16 @@ public class Cliente extends Persona implements IActualizable{
         this.cantidadMascotas = 0;
  
     }
+
+
     @Override
-    public void  mostrarInfo()
-    {
+
+     public void registrarCliente(){
+        System.out.println("Cliente Registrado" + getNombre());
+     }
+    
+     @Override
+    public void mostrarDatosCliente(){
         System.out.println("INFORMACION DEL CLIENTE");
         System.out.println("ID CLIENTE: " + idCliente);
         System.out.println("Nombre: " + getNombre());
@@ -26,34 +35,53 @@ public class Cliente extends Persona implements IActualizable{
         System.out.println("Dirección: " + getDireccion());
         System.out.println("Tipo de persona: " + getTipoPersona());
         System.out.println("Fecha" + fechaRegistro);
+        System.out.println("Cantidad de mascotas" + mascotas.size());
+    }
+
+    @Override
+    public void actualizarDatosCliente(String campo, Object nuevoValor){
+        switch (campo){
+            case "nombre": this.nombre =(String) nuevoValor;break;
+        }
+        if(campo.equals("nombre")){
+            this.nombre =(String)nuevoValor;
+        }
 
     }
 
-    public String getIdCliente() {
-        return idCliente;
+    @Override
+    public void eliminarMascota(String nombreMascota)
+    {
+        
     }
+    @Override
+    public List<Mascota> getMascotas()
+    {
+        return mascota;
+    }
+    Override
+    public void mostrarMascota()
+    {
 
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
     }
+    //get
 
-    public LocalDate getFechaRegistro() {
-        return fechaRegistro;
-    }
+    public String getIdCliente() { return idCliente; }
+   
 
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
+    public LocalDate getFechaRegistro() { return fechaRegistro;}
 
-    public int getCantidadMascotas() {
-        return cantidadMascotas;
-    }
 
-    public void setCantidadMascotas(int cantidadMascotas) {
-        this.cantidadMascotas = cantidadMascotas;
-    }
+    public int getCantidadMascotas() { return cantidadMascotas;}
 
-    public void agregarMascota() {
-        this.cantidadMascotas++;
-    }
+
+//set
+    public void setCantidadMascotas(int cantidadMascotas) {this.cantidadMascotas = cantidadMascotas;}
+ 
+    public void setIdCliente(String idCliente) {this.idCliente = idCliente;}
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {this.fechaRegistro = fechaRegistro;}
+
+    
+    public void agregarMascota(Mascota mascota) {this.cantidadMascotas++;}
 }
