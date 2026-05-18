@@ -6,6 +6,7 @@ public class Cliente extends Persona implements ICliente{
     private String idCliente;
     private LocalDate fechaRegistro;
     private int cantidadMascotas;
+    private List<Mascota> mascotas = new ArrayList<>();
 
 
     public Cliente(String nombre, String telefono, String direccion, String tipoPersona, String idCliente, LocalDate fechaRegistro, int cantidadMascotas)
@@ -42,28 +43,30 @@ public class Cliente extends Persona implements ICliente{
     public void actualizarDatosCliente(String campo, Object nuevoValor){
         switch (campo){
             case "nombre": this.nombre =(String) nuevoValor;break;
-        }
-        if(campo.equals("nombre")){
-            this.nombre =(String)nuevoValor;
-        }
-
+            }
     }
+    
+
+    @Override
+    public void agregarMascota(Mascota mascota) {this.cantidadMascotas++;}
 
     @Override
     public void eliminarMascota(String nombreMascota)
     {
-        
+        mascotas.removeIf(m->m.getNombre().equals(nombreMascota));
     }
+
     @Override
     public List<Mascota> getMascotas()
     {
-        return mascota;
+        return mascotas;
     }
-    Override
+    @Override
     public void mostrarMascota()
     {
 
     }
+    
     //get
 
     public String getIdCliente() { return idCliente; }
@@ -82,6 +85,4 @@ public class Cliente extends Persona implements ICliente{
 
     public void setFechaRegistro(LocalDate fechaRegistro) {this.fechaRegistro = fechaRegistro;}
 
-    
-    public void agregarMascota(Mascota mascota) {this.cantidadMascotas++;}
 }
