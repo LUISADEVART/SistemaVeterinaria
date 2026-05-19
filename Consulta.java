@@ -22,11 +22,11 @@ public class Consulta {
         this.mascota = mascota;
     }
 
-    public void MostrarInfo() {
+    public void mostrarInfo() {
  
         System.out.println("=".repeat(50));        
         System.out.print("Informacion de la mascota: ");
-        mascota.MostrarInfo();
+        mascota.mostrarInfo();
         System.out.println("=".repeat(50));
         DateTimeFormatter formatoFechaSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatoHoraSalida = DateTimeFormatter.ofPattern("hh:mm a");

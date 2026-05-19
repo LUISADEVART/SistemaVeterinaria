@@ -1,9 +1,9 @@
-public abstract class Persona {
+public class Persona {
 
-    private String nombre;
-    private String telefono;
-    private String direccion;
-    private String tipoPersona;
+    protected String nombre;
+    protected String telefono;
+    protected String direccion;
+    protected String tipoPersona;
 
     public Persona(String nombre, String telefono, String direccion, String tipoPersona) {
         this.nombre = nombre;
@@ -12,8 +12,6 @@ public abstract class Persona {
         this.tipoPersona = tipoPersona;
     }
  
-
-    public abstract void mostrarInfo();
  //geters
     public String getNombre(){
     return nombre;

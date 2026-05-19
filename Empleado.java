@@ -13,13 +13,13 @@ public class Empleado extends Persona{
         this.fechaContratacion = fechaContratacion;
         this.cargo = cargo;
     }
-    @Override
+
     public void mostrarInfo(){
         System.out.println("Cargo: " + cargo);
         System.out.println("Nombre: " + getNombre());
         System.out.println("Telefono: " + getTelefono());
         System.out.println("Dirección: " + getDireccion());
-        System.out.println("Tipo Persona" + getTipoPersona());
+        System.out.println("Tipo Persona: " + getTipoPersona());
         System.out.println("Salario: " + salario);
         System.out.println("Fecha de Contratación: " + fechaContratacion);
     }
