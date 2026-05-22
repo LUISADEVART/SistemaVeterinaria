@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("╔══════════════════════════════════╗");
+        System.out.println("║    Clínica Veterinaria Pezuña    ║");
+        System.out.println("╚══════════════════════════════════╝");
 
 
         Mascota m = new Mascota("Evangeline", 11, "perro", "Malamute de Alaska", 27.23f);
@@ -18,12 +21,17 @@ public class Main {
         Scanner infoIngresada =  new Scanner(System.in);
         do{
             Menu();
-
+            int opcionCliente = 0;
             opcion = infoIngresada.nextInt();
             infoIngresada.nextLine();
 
             switch(opcion){
                 case 1:
+                    
+
+                    switch (opcionCliente){
+
+                    }
                     System.out.println("o=o=o=> CLIENTE <=o=o=o");
                     cliente1.mostrarDatosCliente();
                 break;
