@@ -19,6 +19,7 @@ public class Consulta {
         this.hora = LocalTime.parse(hora, formatoHora);
         this.motivoConsulta = motivoConsulta;
         this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
         this.mascota = mascota;
     }
 

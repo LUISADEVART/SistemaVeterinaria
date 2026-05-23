@@ -1,7 +1,0 @@
-import java.util.List;
-public interface ICliente{
-    void registrarEmpleado();
-    void mostrarDatosEmpleado();
-    void actualizarDatosEmpleado(String campo, Object nuevoValor)
-    
-}
