@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Cliente extends Persona implements ICliente {
 
@@ -16,7 +17,19 @@ public class Cliente extends Persona implements ICliente {
     }
 
     @Override
-    public void registrarCliente() {
+    public void registrarCliente(Scanner scanner) {
+        System.out.println("\n=== REGISTRO DE CLIENTE ===");
+        System.out.print("Nombre: ");
+        setnombre(scanner.nextLine());
+        System.out.print("Teléfono: ");
+        setTelefono(scanner.nextLine());
+        System.out.print("Dirección: ");
+        setDireccion(scanner.nextLine());
+        System.out.print("Tipo de persona: ");
+        setTipoPersona(scanner.nextLine());
+        System.out.print("ID cliente: ");
+        this.idCliente = scanner.nextLine();
+        this.fechaRegistro = LocalDate.now();
         System.out.println("Cliente registrado: " + getNombre());
     }
 

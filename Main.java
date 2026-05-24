@@ -189,7 +189,7 @@ public class Main {
 
             switch (opcionCliente) {
                 case 1:
-                    cliente1.registrarCliente();
+                    cliente1.registrarCliente(infoIngresada);
                     break;
                 case 2:
                     cliente1.mostrarDatosCliente();
@@ -244,7 +244,7 @@ public class Main {
 
             switch (opcionEmpleado) {
                 case 1:
-                    empleado1.registrarEmpleado();
+                    empleado1.registrarEmpleado(infoIngresada);
                     break;
                 case 2:
                     empleado1.mostrarDatosEmpleado();

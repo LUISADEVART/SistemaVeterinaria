@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Empleado extends Persona implements IEmpleado {
 
@@ -15,7 +16,27 @@ public class Empleado extends Persona implements IEmpleado {
     }
 
     @Override
-    public void registrarEmpleado() {
+    public void registrarEmpleado(Scanner scanner) {
+        System.out.println("\n=== REGISTRO DE EMPLEADO ===");
+        System.out.print("Nombre: ");
+        setnombre(scanner.nextLine());
+        System.out.print("Teléfono: ");
+        setTelefono(scanner.nextLine());
+        System.out.print("Dirección: ");
+        setDireccion(scanner.nextLine());
+        System.out.print("Tipo de persona: ");
+        setTipoPersona(scanner.nextLine());
+        System.out.print("Cargo: ");
+        this.cargo = scanner.nextLine();
+        System.out.print("Salario: ");
+        this.salario = Float.parseFloat(scanner.nextLine().trim().replace(',', '.'));
+        System.out.print("Año de contratación: ");
+        int anio = Integer.parseInt(scanner.nextLine().trim());
+        System.out.print("Mes (1-12): ");
+        int mes = Integer.parseInt(scanner.nextLine().trim());
+        System.out.print("Día: ");
+        int dia = Integer.parseInt(scanner.nextLine().trim());
+        this.fechaContratacion = LocalDate.of(anio, mes, dia);
         System.out.println("Empleado registrado: " + getNombre());
     }
 

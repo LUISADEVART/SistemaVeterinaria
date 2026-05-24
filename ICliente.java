@@ -1,8 +1,9 @@
 import java.util.List;
+import java.util.Scanner;
 
 public interface ICliente{
 
-    void registrarCliente();
+    void registrarCliente(Scanner scanner);
     void mostrarDatosCliente();
     void actualizarDatosCliente(String campo, Object nuevoValor);
     void eliminarMascota(String nombreMascota);

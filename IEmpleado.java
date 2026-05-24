@@ -1,6 +1,8 @@
+import java.util.Scanner;
+
 public interface IEmpleado {
 
-    void registrarEmpleado();
+    void registrarEmpleado(Scanner scanner);
 
     void mostrarDatosEmpleado();
 
