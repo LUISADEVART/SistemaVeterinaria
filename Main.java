@@ -137,16 +137,11 @@ public class Main {
                     historia.mostrarHistoria();
                     break;
                 case 2:
-                    System.out.print("Año: ");
-                    int anio = Integer.parseInt(infoIngresada.nextLine());
-                    System.out.print("Mes (1-12): ");
-                    int mes = Integer.parseInt(infoIngresada.nextLine());
-                    System.out.print("Día: ");
-                    int dia = Integer.parseInt(infoIngresada.nextLine());
-                    System.out.print("Hora (0-23): ");
-                    int hora = Integer.parseInt(infoIngresada.nextLine());
-                    System.out.print("Minutos: ");
-                    int minutos = Integer.parseInt(infoIngresada.nextLine());
+                    int anio = leerEntero(infoIngresada, "Año: ");
+                    int mes = leerEntero(infoIngresada, "Mes (1-12): ");
+                    int dia = leerEntero(infoIngresada, "Día: ");
+                    int hora = leerEntero(infoIngresada, "Hora (0-23): ");
+                    int minutos = leerEntero(infoIngresada, "Minutos: ");
                     System.out.print("Motivo: ");
                     String motivo = infoIngresada.nextLine();
                     System.out.print("Diagnóstico: ");
@@ -159,8 +154,7 @@ public class Main {
                             motivo, diagnostico, tratamiento, m));
                     break;
                 case 3:
-                    System.out.print("Índice de consulta a eliminar (empieza en 0): ");
-                    int indice = Integer.parseInt(infoIngresada.nextLine());
+                    int indice = leerEntero(infoIngresada, "Índice de consulta a eliminar (empieza en 0): ");
                     historia.eliminarConsulta(indice);
                     break;
                 case 4:
@@ -169,6 +163,22 @@ public class Main {
                     System.out.println("Opción no válida.");
             }
         } while (opcion != 4);
+    }
+
+    private static int leerEntero(Scanner scanner, String mensaje) {
+        while (true) {
+            System.out.print(mensaje);
+            String linea = scanner.nextLine().trim();
+            if (linea.isEmpty()) {
+                System.out.println("Debe ingresar un número.");
+                continue;
+            }
+            try {
+                return Integer.parseInt(linea);
+            } catch (NumberFormatException e) {
+                System.out.println("Número no válido. Intente de nuevo.");
+            }
+        }
     }
 
     public static void menuCliente(Cliente cliente1, Scanner infoIngresada) {
