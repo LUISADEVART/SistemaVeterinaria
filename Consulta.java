@@ -89,7 +89,7 @@ public class Consulta implements IConsulta {
         System.out.println("=============================");
     }
 
-    @Override
+    
     public void mostrarInfo() {
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatoHora  = DateTimeFormatter.ofPattern("hh:mm a");
