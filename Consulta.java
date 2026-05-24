@@ -31,11 +31,12 @@ public class Consulta implements IConsulta {
 
     @Override
     public void agendarConsulta() {
-        if (cancelada) {
-            System.out.println("No se puede agendar, la consulta fue cancelada.");
+        if (agendada && !cancelada) {
+            System.out.println("La consulta ya está agendada.");
             return;
         }
         this.agendada = true;
+        this.cancelada = false;
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatoHora  = DateTimeFormatter.ofPattern("hh:mm a");
         System.out.println("Consulta agendada correctamente.");
