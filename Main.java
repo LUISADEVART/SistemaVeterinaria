@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -11,18 +12,20 @@ public class Main {
         Mascota m = new Mascota("Evangeline", 11, "perro", "Malamute de Alaska", 27.23f);
 
         Consulta consulta1 = new Consulta(
-                "23/04/2026", "19:00",
+                LocalDate.of(2026, 4, 3), LocalTime.of(19, 0),
                 "Le duele la oreja", "Otitis", "Gritin cada 8 horas", m);
 
         Cliente cliente1 = new Cliente(
                 "Luisa", "123456", "p sherman calle wallaby 47 sidney",
                 "natural", "10001345", LocalDate.of(2026, 5, 7), 7);
+        cliente1.agregarMascota(m);
 
         Empleado empleado1 = new Empleado(
                 "Kevin", "0987654321", "Calle 6", "Natural",
                 10.599f, LocalDate.of(2020, 4, 7), "Veterinario");
 
-        cliente1.agregarMascota(m);
+        HistoriaClinica historia = new HistoriaClinica("H001", m, cliente1, empleado1);
+        historia.agregarConsulta(consulta1);
 
         Scanner infoIngresada = new Scanner(System.in);
         int opcion = 0;
@@ -41,18 +44,21 @@ public class Main {
                     m.mostrarInfo();
                     break;
                 case 3:
-                    menuConsulta(consulta1);
+                    menuConsulta(consulta1, infoIngresada); // ✅ se pasa infoIngresada
                     break;
                 case 4:
                     menuEmpleado(empleado1, infoIngresada);
                     break;
                 case 5:
+                    menuHistoriaClinica(historia, infoIngresada, m);
+                    break;
+                case 6:
                     System.out.println("Hasta luego.");
                     break;
                 default:
                     System.out.println("Opción no válida.");
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
 
         infoIngresada.close();
     }
@@ -63,8 +69,106 @@ public class Main {
         System.out.println("Opción 2 : Mascota");
         System.out.println("Opción 3 : Consulta");
         System.out.println("Opción 4 : Empleado");
-        System.out.println("Opción 5 : Salir");
+        System.out.println("Opción 5 : Historia Clínica");
+        System.out.println("Opción 6 : Salir");
         System.out.print("Ingrese una opción: ");
+    }
+
+    // ✅ menuConsulta corregido
+    public static void menuConsulta(Consulta consulta1, Scanner infoIngresada) {
+        int opcionConsulta;
+        do {
+            System.out.println("\n>MENU CONSULTA<");
+            System.out.println("1. Agendar consulta");
+            System.out.println("2. Mostrar información de la consulta");
+            System.out.println("3. Cancelar consulta");
+            System.out.println("4. Tratamiento asignado");
+            System.out.println("5. Generar factura");
+            System.out.println("6. Crear historia clínica");
+            System.out.println("7. Volver al menú principal");
+            System.out.print("Opción: ");
+
+            opcionConsulta = infoIngresada.nextInt();
+            infoIngresada.nextLine();
+
+            switch (opcionConsulta) {
+                case 1:
+                    consulta1.agendarConsulta();
+                    break;
+                case 2:
+                    consulta1.mostrarInfo();
+                    break;
+                case 3:
+                    consulta1.cancelarConsulta();
+                    break;
+                case 4:
+                    consulta1.asignarTratamiento();
+                    break;
+                case 5:
+                    consulta1.generarFactura();
+                    break;
+                case 6:
+                    consulta1.crearHistoriaClinica();
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        } while (opcionConsulta != 7);
+    }
+
+    public static void menuHistoriaClinica(HistoriaClinica historia,
+                                            Scanner infoIngresada, Mascota m) {
+        int opcion;
+        do {
+            System.out.println("\n>MENU HISTORIA CLÍNICA<");
+            System.out.println("1. Mostrar historia clínica");
+            System.out.println("2. Agregar consulta");
+            System.out.println("3. Eliminar consulta");
+            System.out.println("4. Volver al menú principal");
+            System.out.print("Opción: ");
+
+            opcion = infoIngresada.nextInt();
+            infoIngresada.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    historia.mostrarHistoria();
+                    break;
+                case 2:
+                    System.out.print("Año: ");
+                    int anio = Integer.parseInt(infoIngresada.nextLine());
+                    System.out.print("Mes (1-12): ");
+                    int mes = Integer.parseInt(infoIngresada.nextLine());
+                    System.out.print("Día: ");
+                    int dia = Integer.parseInt(infoIngresada.nextLine());
+                    System.out.print("Hora (0-23): ");
+                    int hora = Integer.parseInt(infoIngresada.nextLine());
+                    System.out.print("Minutos: ");
+                    int minutos = Integer.parseInt(infoIngresada.nextLine());
+                    System.out.print("Motivo: ");
+                    String motivo = infoIngresada.nextLine();
+                    System.out.print("Diagnóstico: ");
+                    String diagnostico = infoIngresada.nextLine();
+                    System.out.print("Tratamiento: ");
+                    String tratamiento = infoIngresada.nextLine();
+                    historia.agregarConsulta(new Consulta(
+                            LocalDate.of(anio, mes, dia),
+                            LocalTime.of(hora, minutos),
+                            motivo, diagnostico, tratamiento, m));
+                    break;
+                case 3:
+                    System.out.print("Índice de consulta a eliminar (empieza en 0): ");
+                    int indice = Integer.parseInt(infoIngresada.nextLine());
+                    historia.eliminarConsulta(indice);
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        } while (opcion != 4);
     }
 
     public static void menuCliente(Cliente cliente1, Scanner infoIngresada) {
@@ -91,7 +195,7 @@ public class Main {
                     cliente1.mostrarDatosCliente();
                     break;
                 case 3:
-                    System.out.print("Campo (nombre, telefono, direccion): ");
+                    System.out.print("Escribe el campo que quieres editar (nombre, telefono, direccion): ");
                     String campo = infoIngresada.nextLine();
                     System.out.print("Nuevo valor: ");
                     String valor = infoIngresada.nextLine();
@@ -158,10 +262,5 @@ public class Main {
                     System.out.println("Opción no válida.");
             }
         } while (opcionEmpleado != 4);
-    }
-
-    public static void menuConsulta(Consulta consulta1) {
-        System.out.println("\n>MENU CONSULTA<");
-        consulta1.mostrarInfo();
     }
 }
